@@ -9,6 +9,7 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import checkFile from 'eslint-plugin-check-file';
 import esImport from 'eslint-plugin-import';
 import pluginLingui from 'eslint-plugin-lingui';
+import vitest from '@vitest/eslint-plugin';
 
 import { defineConfig, globalIgnores } from 'eslint/config';
 
@@ -106,5 +107,10 @@ export default defineConfig([
         { argsIgnorePattern: '^_' },
       ],
     },
+  },
+  {
+    files: ['**/*.test.{ts,tsx}'],
+    plugins: { vitest },
+    extends: [vitest.configs.recommended],
   },
 ]);
