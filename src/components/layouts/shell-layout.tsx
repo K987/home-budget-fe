@@ -4,7 +4,6 @@ import { NavLink } from 'react-router';
 
 import { paths } from '@/config/paths.ts';
 
-
 const ShellLayout = ({ children }: { children: React.ReactNode }) => {
   const { _ } = useLingui();
   return (
@@ -25,6 +24,7 @@ const ShellLayout = ({ children }: { children: React.ReactNode }) => {
           <MantineNavLink
             key={key}
             label={_(value.name)}
+            leftSection={<value.icon />}
             component={NavLink}
             to={value.path}
             aria-label={_(value.name)}
