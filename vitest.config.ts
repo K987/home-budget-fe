@@ -1,19 +1,34 @@
-import { defineConfig, mergeConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
+import { defineConfig, mergeConfig } from 'vitest/config';
 
 import viteConfig from './vite.config';
 
+// More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
-      browser: {
-        enabled: true,
-        provider: playwright(),
-        viewport: { width: 1280, height: 720 },
-        // https://vitest.dev/guide/browser/playwright
-        instances: [{ browser: 'chromium' }],
-      },
+      projects: [
+        {
+          extends: true,
+          test: {
+            browser: {
+              enabled: true,
+              provider: playwright(),
+              viewport: {
+                width: 1280,
+                height: 720,
+              },
+              // https://vitest.dev/guide/browser/playwright
+              instances: [
+                {
+                  browser: 'chromium',
+                },
+              ],
+            },
+          },
+        },
+      ],
     },
   }),
 );
