@@ -22,6 +22,7 @@ export default defineConfig([
     'node_modules/*',
     'eslint.config.ts',
     'src/locales/*',
+    'src/stories/**',
   ]),
   {
     files: ['**/*.{ts,tsx}'],
