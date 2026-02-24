@@ -4,6 +4,8 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
+import checkFile from 'eslint-plugin-check-file';
+import esImport from 'eslint-plugin-import';
 
 import { defineConfig, globalIgnores } from 'eslint/config';
 
@@ -11,6 +13,12 @@ export default defineConfig([
   globalIgnores(['dist', 'node_modules/*', 'eslint.config.ts']),
   {
     files: ['**/*.{ts,tsx}'],
+    plugins: {
+      'check-file': checkFile,
+      import: esImport,
+      reactHooks: reactHooks,
+      reactRefresh: reactRefresh,
+    },
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
@@ -19,7 +27,7 @@ export default defineConfig([
       eslintConfigPrettier,
     ],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
         ...globals.browser,
@@ -41,6 +49,44 @@ export default defineConfig([
       },
     },
     rules: {
+      'check-file/filename-naming-convention': [
+        'error',
+        {
+          '**/*.{ts,tsx}': 'KEBAB_CASE',
+        },
+        {
+          ignoreMiddleExtensions: true,
+        },
+      ],
+      'check-file/folder-naming-convention': [
+        'error',
+        {
+          'src/**/!(__tests__)': 'KEBAB_CASE',
+        },
+      ],
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+          ],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+        },
+      ],
+      'import/default': 'off',
+      'import/no-named-as-default-member': 'off',
+      'import/no-named-as-default': 'off',
+      'import/no-cycle': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_' },
