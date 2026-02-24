@@ -1,3 +1,5 @@
+import '@mantine/core/styles.css';
+import { ColorSchemeScript, type MantineColorScheme } from '@mantine/core';
 import { Preview } from 'storybook/preview-api';
 import { spyOn } from 'storybook/test';
 
@@ -16,6 +18,7 @@ export const parameters = {
     storySort: (a, b) =>
       a.title.localeCompare(b.title, undefined, { numeric: true }),
   },
+  backgrounds: { disable: true },
 };
 
 const preview: Preview = {
@@ -49,6 +52,18 @@ export const globalTypes = {
       showName: true,
     },
   },
+  theme: {
+    name: 'Theme',
+    description: 'Mantine color scheme',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'mirror',
+      items: [
+        { value: 'light', title: 'Light' },
+        { value: 'dark', title: 'Dark' },
+      ],
+    },
+  },
 };
 
 export const decorators = [
@@ -56,7 +71,13 @@ export const decorators = [
     renderStory: () => React.ReactNode,
     context: { globals: { theme?: string; locale?: string } },
   ) => {
+    const scheme = (context.globals.theme ?? 'light') as MantineColorScheme;
     const locale = context.globals.locale ?? 'en';
-    return <AppProvider locale={locale}>{renderStory()}</AppProvider>;
+    return (
+      <AppProvider locale={locale} forceScheme={scheme}>
+        <ColorSchemeScript />
+        {renderStory()}
+      </AppProvider>
+    );
   },
 ];
