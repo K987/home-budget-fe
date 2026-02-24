@@ -6,3 +6,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/config/paths.ts:29
+msgid "Config"
+msgstr "Config"
+
+#: src/config/paths.ts:17
+msgid "Expenses"
+msgstr "Expenses"
+
+#: src/config/paths.ts:13
+msgid "Incomes"
+msgstr "Incomes"
+
+#: src/config/paths.ts:25
+msgid "Plans"
+msgstr "Plans"
+
+#: src/config/paths.ts:21
+msgid "Pockets"
+msgstr "Pockets"
+
+#: src/config/paths.ts:9
+msgid "Stats"
+msgstr "Stats"

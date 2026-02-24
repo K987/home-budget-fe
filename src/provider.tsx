@@ -1,10 +1,13 @@
 import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 import { type MantineColorScheme, MantineProvider } from '@mantine/core';
-import * as React from 'react';
+import React from 'react';
+
+import { messages as messagesEn } from '@/locales/en/messages.ts';
+import { messages as messagesHu } from '@/locales/hu/messages.ts';
+import { mantineTheme } from '@/theme.ts';
 
 import '@mantine/core/styles.css';
-import { mantineTheme } from './theme.ts';
 
 interface AppProviderProps {
   locale: string;
@@ -13,8 +16,8 @@ interface AppProviderProps {
 }
 
 i18n.load({
-  en: {},
-  hu: {}, //TODO load messages
+  en: messagesEn,
+  hu: messagesHu,
 });
 
 const AppProvider = ({ locale, forceScheme, children }: AppProviderProps) => {
@@ -24,7 +27,7 @@ const AppProvider = ({ locale, forceScheme, children }: AppProviderProps) => {
       <MantineProvider
         theme={mantineTheme}
         forceColorScheme={
-          forceScheme === null || forceScheme === 'auto' ? 'dark' : forceScheme
+          !forceScheme || forceScheme === 'auto' ? 'dark' : forceScheme
         }
       >
         {children}
