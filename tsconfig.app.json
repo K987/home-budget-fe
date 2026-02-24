@@ -11,7 +11,8 @@
     /* Use path aliases */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@test-utils": ["./test-utils"]
     },
 
     /* Bundler mode */
@@ -27,5 +28,10 @@
     "erasableSyntaxOnly": true,
     "allowJs": false
   },
-  "include": ["src", ".storybook/main.ts", ".storybook/preview.tsx"]
+  "include": [
+    "src",
+    ".storybook/main.ts",
+    ".storybook/preview.tsx",
+    "test-utils"
+  ]
 }

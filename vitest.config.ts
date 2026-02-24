@@ -12,6 +12,7 @@ export default mergeConfig(
         {
           extends: true,
           test: {
+            setupFiles: ['./test-utils/setup.ts'],
             browser: {
               enabled: true,
               provider: playwright(),
