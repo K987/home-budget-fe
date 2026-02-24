@@ -15,7 +15,12 @@ export default mergeConfig(
             setupFiles: ['./test-utils/setup.ts'],
             browser: {
               enabled: true,
-              provider: playwright(),
+              headless: true,
+              provider: playwright({
+                launchOptions: {
+                  //slowMo: 50,
+                },
+              }),
               viewport: {
                 width: 1280,
                 height: 720,
