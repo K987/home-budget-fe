@@ -2,6 +2,8 @@ import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
+import react from 'eslint-plugin-react-x';
+import dom from 'eslint-plugin-react-dom';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import checkFile from 'eslint-plugin-check-file';
@@ -18,10 +20,14 @@ export default defineConfig([
       import: esImport,
       reactHooks: reactHooks,
       reactRefresh: reactRefresh,
+      react: react,
+      dom: dom,
     },
     extends: [
       js.configs.recommended,
       tseslint.configs.recommended,
+      react.configs.recommended,
+      dom.configs.recommended,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
       eslintConfigPrettier,
