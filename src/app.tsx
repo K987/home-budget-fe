@@ -1,14 +1,29 @@
+import {
+  detect,
+  fromNavigator,
+  fromStorage,
+  fromUrl,
+} from '@lingui/detect-locale';
 import { useState } from 'react';
 
+import AppProvider from '@/provider.tsx';
+
 import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import viteLogo from '/vite.svg';
 
 function App() {
+  let locale = detect(
+    fromUrl('lang'),
+    fromStorage('lang'),
+    fromNavigator(),
+    'en',
+  );
+  locale = locale && ['en', 'hu'].includes(locale) ? locale : 'en';
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <AppProvider locale={locale}>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -29,7 +44,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </AppProvider>
   );
 }
 

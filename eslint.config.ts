@@ -8,11 +8,17 @@ import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import checkFile from 'eslint-plugin-check-file';
 import esImport from 'eslint-plugin-import';
+import pluginLingui from 'eslint-plugin-lingui';
 
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
-  globalIgnores(['dist', 'node_modules/*', 'eslint.config.ts']),
+  globalIgnores([
+    'dist',
+    'node_modules/*',
+    'eslint.config.ts',
+    'src/locales/*',
+  ]),
   {
     files: ['**/*.{ts,tsx}'],
     plugins: {
@@ -22,6 +28,7 @@ export default defineConfig([
       reactRefresh: reactRefresh,
       react: react,
       dom: dom,
+      pluginLingui: pluginLingui,
     },
     extends: [
       js.configs.recommended,
@@ -31,6 +38,7 @@ export default defineConfig([
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
       eslintConfigPrettier,
+      pluginLingui.configs['flat/recommended'],
     ],
     languageOptions: {
       ecmaVersion: 'latest',
