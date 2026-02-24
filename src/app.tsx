@@ -9,7 +9,6 @@ import { useState } from 'react';
 import AppProvider from '@/provider.tsx';
 
 import reactLogo from './assets/react.svg';
-import './App.css';
 import viteLogo from '/vite.svg';
 
 function App() {
