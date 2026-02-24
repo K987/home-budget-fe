@@ -29,3 +29,6 @@ coverage
 # Storybook
 *storybook.log
 storybook-static
+
+# Pirvate
+priv
