@@ -2,10 +2,12 @@ import { useLingui } from '@lingui/react';
 import { AppShell, NavLink as MantineNavLink } from '@mantine/core';
 import { NavLink } from 'react-router';
 
+import ShellHeader from '@/components/layouts/shell-header.tsx';
 import { paths } from '@/config/paths.ts';
 
 const ShellLayout = ({ children }: { children: React.ReactNode }) => {
   const { _ } = useLingui();
+
   return (
     <AppShell
       padding="md"
@@ -16,7 +18,7 @@ const ShellLayout = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       <AppShell.Header>
-        <div>Logo</div>
+        <ShellHeader />
       </AppShell.Header>
 
       <AppShell.Navbar>
