@@ -7,6 +7,7 @@ import {
   userEvent,
   expect,
   test,
+  mockMantineToggleColorScheme,
 } from '@test-utils/setup.ts';
 
 vi.mock('@/utils/i18n.ts', { spy: true });
@@ -40,4 +41,18 @@ test('calls language changed when a language is selected', async () => {
   await userEvent.click(eng);
 
   await vi.waitFor(() => expect(dynamicActivate).toHaveBeenCalledWith('en'));
+});
+
+test('renders theme switch and toggles color scheme', async () => {
+  const { getByLabelText, rerender } = await render(<ShellHeader />);
+  const langSwitch = getByLabelText('toggle color scheme');
+  await expect.element(langSwitch).toBeVisible();
+  await expect.element(langSwitch).not.toBeChecked();
+
+  await userEvent.click(langSwitch);
+  await vi.waitFor(() => expect(mockMantineToggleColorScheme));
+
+  await rerender(<ShellHeader />);
+  await expect.element(langSwitch).toBeVisible();
+  await expect.element(langSwitch).toBeChecked();
 });
