@@ -22,9 +22,7 @@ const AppProvider = ({ locale, forceScheme, children }: AppProviderProps) => {
     <I18nProvider i18n={i18n}>
       <MantineProvider
         theme={mantineTheme}
-        forceColorScheme={
-          !forceScheme || forceScheme === 'auto' ? 'dark' : forceScheme
-        }
+        defaultColorScheme={forceScheme || 'light'}
       >
         {children}
       </MantineProvider>

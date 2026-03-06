@@ -10,13 +10,14 @@ import {
   useMantineColorScheme,
 } from '@mantine/core';
 import { GrLanguage } from 'react-icons/gr';
-import { MdDarkMode } from 'react-icons/md';
-import { MdLightMode } from 'react-icons/md';
+import { MdDarkMode, MdLightMode } from 'react-icons/md';
 
 import { dynamicActivate, locales } from '@/utils/i18n.ts';
 
 const ShellHeader = () => {
-  const { setColorScheme } = useMantineColorScheme({ keepTransitions: true });
+  const { toggleColorScheme } = useMantineColorScheme({
+    keepTransitions: true,
+  });
   const currentColorScheme = useComputedColorScheme('light');
 
   const { t } = useLingui();
@@ -66,6 +67,15 @@ const ShellHeader = () => {
             ))}
           </Menu.Dropdown>
         </Menu>
+        <Switch
+          onClick={() => toggleColorScheme()}
+          checked={currentColorScheme === 'dark'}
+          size="md"
+          color="dark.4"
+          aria-label={t`toggle color scheme`}
+          onLabel={<MdDarkMode size={16} />}
+          offLabel={<MdLightMode size={16} />}
+        />
       </Group>
     </Flex>
   );

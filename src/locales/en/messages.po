@@ -40,3 +40,7 @@ msgstr "select language"
 #: src/config/paths.ts:17
 msgid "Stats"
 msgstr "Stats"
+
+#: src/components/layouts/shell-header.tsx:75
+msgid "toggle color scheme"
+msgstr "toggle color scheme"
