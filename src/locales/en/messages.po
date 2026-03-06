@@ -13,26 +13,30 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/config/paths.ts:29
+#: src/config/paths.ts:42
 msgid "Config"
 msgstr "Config"
 
-#: src/config/paths.ts:17
+#: src/config/paths.ts:27
 msgid "Expenses"
 msgstr "Expenses"
 
-#: src/config/paths.ts:13
+#: src/config/paths.ts:22
 msgid "Incomes"
 msgstr "Incomes"
 
-#: src/config/paths.ts:25
+#: src/config/paths.ts:37
 msgid "Plans"
 msgstr "Plans"
 
-#: src/config/paths.ts:21
+#: src/config/paths.ts:32
 msgid "Pockets"
 msgstr "Pockets"
 
-#: src/config/paths.ts:9
+#: src/components/layouts/shell-header.tsx:45
+msgid "select language"
+msgstr "select language"
+
+#: src/config/paths.ts:17
 msgid "Stats"
 msgstr "Stats"
