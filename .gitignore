@@ -25,6 +25,8 @@ dist-ssr
 
 # Vitest coverage
 coverage
+.vitest
+__screenshots__/
 
 # Storybook
 *storybook.log
