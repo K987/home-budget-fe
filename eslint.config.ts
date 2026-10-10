@@ -10,7 +10,8 @@ import dom from 'eslint-plugin-react-dom';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import checkFile from 'eslint-plugin-check-file';
-import esImport from 'eslint-plugin-import';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import { importX } from 'eslint-plugin-import-x';
 import pluginLingui from 'eslint-plugin-lingui';
 import vitest from '@vitest/eslint-plugin';
 
@@ -28,7 +29,7 @@ export default defineConfig([
     files: ['**/*.{ts,tsx}'],
     plugins: {
       'check-file': checkFile,
-      import: esImport,
+      'import-x': importX,
       reactHooks: reactHooks,
       reactRefresh: reactRefresh,
       react: react,
@@ -63,9 +64,7 @@ export default defineConfig([
       react: {
         version: 'detect',
       },
-      'import/resolver': {
-        typescript: {},
-      },
+      'import-x/resolver-next': [createTypeScriptImportResolver()],
     },
     rules: {
       'check-file/filename-naming-convention': [
@@ -83,7 +82,7 @@ export default defineConfig([
           'src/**/!(__tests__)': 'KEBAB_CASE',
         },
       ],
-      'import/order': [
+      'import-x/order': [
         'error',
         {
           groups: [
@@ -102,10 +101,10 @@ export default defineConfig([
           },
         },
       ],
-      'import/default': 'off',
-      'import/no-named-as-default-member': 'off',
-      'import/no-named-as-default': 'off',
-      'import/no-cycle': 'error',
+      'import-x/default': 'off',
+      'import-x/no-named-as-default-member': 'off',
+      'import-x/no-named-as-default': 'off',
+      'import-x/no-cycle': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_' },

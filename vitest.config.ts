@@ -21,6 +21,9 @@ export default mergeConfig(
                   //slowMo: 50,
                 },
               }),
+              // Vitest 5 matches text exactly by default; the i18n mock
+              // prefixes labels, so tests rely on substring matching.
+              locators: { exact: false },
               viewport: {
                 width: 1280,
                 height: 720,

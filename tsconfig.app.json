@@ -9,7 +9,6 @@
     "skipLibCheck": true,
 
     /* Use path aliases */
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@test-utils/*": ["./test-utils/*"]
